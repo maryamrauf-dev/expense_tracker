@@ -7,12 +7,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
-// Local "database" array
 let expenses = [];
 
-// Main Route - Read & Calculate
 app.get('/', (req, res) => {
-    // Calculate total expenses dynamically using reduce
+
     const total = expenses.reduce((sum, item) => sum + Number(item.amount), 0);
     
     res.render('index', { 
@@ -21,12 +19,12 @@ app.get('/', (req, res) => {
     });
 });
 
-// Add Expense Route - Create
+
 app.post('/add-expense', (req, res) => {
     const { title, amount, category, date } = req.body;
     
     const newExpense = {
-        id: Date.now(), // Simple unique ID
+        id: Date.now(), 
         title,
         amount: parseFloat(amount),
         category,
@@ -37,7 +35,6 @@ app.post('/add-expense', (req, res) => {
     res.redirect('/');
 });
 
-// Delete Expense Route - Delete
 app.post('/delete-expense/:id', (req, res) => {
     const idToFind = parseInt(req.params.id);
     expenses = expenses.filter(item => item.id !== idToFind);
