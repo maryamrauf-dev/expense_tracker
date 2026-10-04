@@ -19,6 +19,7 @@ body {
     max-width: 850px;
     margin: 0 auto;
     padding: 20px 28px;
+    min-width: 0;
 
     background: rgba(255, 255, 255, 0.95);
 
@@ -185,7 +186,8 @@ body {
 
 
 .expense-table {
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
 
     border-radius: 12px;
 
@@ -193,6 +195,7 @@ body {
 }
 
 .expense-table table {
+    min-width: 600px;
     margin-bottom: 0;
 }
 
@@ -278,4 +281,56 @@ body {
         padding: 15px;
     }
 
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 12px 0;
+    }
+
+    .tracker-container {
+        width: auto;
+        margin: 0 12px;
+        padding: 18px 14px;
+        border-radius: 16px;
+    }
+
+    .page-title {
+        font-size: clamp(22px, 7vw, 26px);
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .total-card {
+        padding: 14px 16px;
+    }
+
+    .total-card h2 {
+        font-size: clamp(24px, 7vw, 28px);
+        overflow-wrap: anywhere;
+    }
+
+    .form-section {
+        padding: 15px 12px;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    .form-control,
+    .form-select {
+        min-height: 44px;
+    }
+
+    .add-btn {
+        width: 100%;
+        min-height: 44px;
+    }
+
+    .empty-state {
+        padding: 14px 10px;
+    }
 }
